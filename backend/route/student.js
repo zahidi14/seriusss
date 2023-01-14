@@ -56,8 +56,8 @@ router.post(
                 return res.status(500).json({id: 3, msg: "Object not found." });
             }
 
-            const class = await Clases.findById(classID);
-            if (!class){
+            const clas = await Clases.findById(classID);
+            if (!clas){
                 return res.status(500).json({id: 3, msg: "Object not found." });
             }
 
