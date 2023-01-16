@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../helper/auth");
 const Mapels = require("../model/Mapels");
+const { check, validationResult } = require("express-validator");
 
 router.get("/", auth, async(req, res)=>{
     try{

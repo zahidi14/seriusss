@@ -2,9 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
+const auth = require("../helper/auth");
 const Students = require("../model/Students");
 const Clases = require("../model/Clases");
-const Students = require("../model/Students");
+
 const { update } = require("../model/Students");
 
 
@@ -38,7 +39,7 @@ router.post(
         auth,[
         check("class", "class of sttudent is required").not().isEmpty(),
         check("firstName", "First Name Is Required").not().isEmpty(),
-        check("nis", "NIS is required ").isNumber()
+        check("nis", "NIS is required ").isNumeric()
         ]
     ],
     async(req, res)=>{

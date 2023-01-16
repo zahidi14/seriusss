@@ -13,6 +13,7 @@ const connect = async () =>{
             useUnifiedTopology: true
         });
         console.log( "MongoDB Connected...");
+        console.log("Akhirnya konek si bgsat")
     }catch(err){
         console.log(" Gagal Blok...");
         console.error(err.message);

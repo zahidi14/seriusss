@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../model/User");
 const jwtSecret = process.env.JWT_SECRET;
+const { check, validationResult } = require("express-validator");
 
 
 router.post(
