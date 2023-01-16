@@ -109,11 +109,11 @@ router.put("/:id", auth, async(req, res)=>{
         return res.status(401).json({id: 0, msg: "Not authorized."});
     }
 
-    exam = await Ujians,findByIdAndUpdate{
+    exam = await Ujians.findByIdAndUpdate(
         req.params.id,
         {$set: fields},
         {new: true}
-    };
+    );
     res.json(exam);
   }catch(err){
     console.error(err.message);
