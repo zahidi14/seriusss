@@ -1,13 +1,15 @@
+import React, { useEffect } from "react";
+import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import React, {useEffect} from "react";
-import {Route, Redirect} from "react-router-dom";
+import { loadUser } from "../../redux/action/authAction";
+import PropTypes from "prop-types";
 
 const PrivateRoute = ({
     auth:{loading, isAuthenticated},
     loadUser,
     component: Component,
     ...rest
-})=>{
+}) => {
     useEffect(()=>{
         loadUser();
     }, []);
@@ -24,12 +26,12 @@ const PrivateRoute = ({
             )
         }
     />  
-    )  
+    )  ;
 };
 
 PrivateRoute.propTypes ={
-    auth: propTypes.objet.isRequired,
-    loadUser: propTypes.func.isRequired
+    auth: PropTypes.object.isRequired,
+    loadUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) =>({
@@ -39,4 +41,4 @@ const mapStateToProps = (state) =>({
 export default connect(
     mapStateToProps,
     {loadUser}
-)(PrivateRoute)
+)(PrivateRoute);

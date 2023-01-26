@@ -18,7 +18,7 @@ const initialState = {
     error: null
 };
 
-export default(state = initialState, action)=>{
+export default (state = initialState, action) => {
     switch (action.type){
         case SET_AUTH_LOADING:
             return{
@@ -41,6 +41,24 @@ export default(state = initialState, action)=>{
 				isAuthenticated: true,
 				loading: false
 			};
-        case
+        case LOGIN_FAIL:
+        case REGISTER_FAIL:
+        case AUTH_ERROR:
+        case LOGOUT:
+            localStorage.removeItem("token");
+            return {    ...state,
+                token: null,
+                isAuthenticated:false,
+                user: null,
+                loading:false,
+                error: action.payload
+            };
+        case CLEAR_ERRORS:
+            return{
+                ...state,
+                error:null
+            }
+        default:
+            return state;
     }
-}
+};
